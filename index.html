@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Calculadora LC - PT2RHI</title>
+</head>
+
+<body>
+    <div class="hero">
+        <!-- Background -->
+        <canvas id="bg"></canvas>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+
+        <!-- Navbar -->
+        <header class="main-header">
+            <h1 class="sci-title">CÁLCULOS DE RADIOFREQUÊNCIA</h1>
+            <span class="sci-subtitle">PT2RHI</span>
+        </header>
+
+        <!-- Container que segura dos cards lado a lado -->
+        <div class="calculator-wrapper">
+
+            <!-- === CARD 1: RESSONÂNCIA LC === -->
+            <div class="calculator-card">
+                <h3 class="card-title">Ressonância LC</h3>
+                <div class="input-group">
+                    <label for="capacitanciaValue">Capacitância (C)</label>
+                    <div class="input-with-select">
+                        <input type="number" id="capacitanciaValue" step="any" placeholder="Valor">
+                        <select id="capacitanciaUnidade">
+                            <option value="1e-12">pF</option>
+                            <option value="1e-9">nF</option>
+                            <option value="1e-6">µF</option>
+                            <option value="1e-3">mF</option>
+                            <option value="1">F</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="indutanciaValue">Indutância (L)</label>
+                    <div class="input-with-select">
+                        <input type="number" id="indutanciaValue" step="any" placeholder="Valor">
+                        <select id="indutanciaUnidade">
+                            <option value="1e-9">nH</option>
+                            <option value="1e-6">µH</option>
+                            <option value="1e-3">mH</option>
+                            <option value="1">H</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-calcular" onclick="calcularFrequencia()">Calcular Frequência</button>
+                <h2 id="resultado"></h2>
+            </div>
+
+            <!-- === CARD 2: ESPIRAS DA BOBINA === -->
+            <div class="calculator-card">
+                <h3 class="card-title">Espiras da Bobina <span class="sub-info">(Núcleo de Ar)</span></h3>
+                <div class="input-group">
+                    <label for="indutanciaBobina">Indutância Desejada (L)</label>
+                    <div class="input-with-select">
+                        <input type="number" id="indutanciaBobina" step="any" placeholder="Valor">
+                        <select id="indutanciaBobinaUnidade">
+                            <option value="1e-9">nH</option>
+                            <option value="1e-6" selected>µH</option>
+                            <option value="1e-3">mH</option>
+                            <option value="1">H</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="comprimentoBobina">Comprimento da Bobina</label>
+                    <div class="input-with-select">
+                        <input type="number" id="comprimentoBobina" step="any" placeholder="Valor">
+                        <select id="comprimentoBobinaUnidade">
+                            <option value="1e-3" selected>mm</option>
+                            <option value="1e-2">cm</option>
+                            <option value="1">m</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="raioBobina">Raio Interno da Bobina</label>
+                    <div class="input-with-select">
+                        <input type="number" id="raioBobina" step="any" placeholder="Valor">
+                        <select id="raioBobinaUnidade">
+                            <option value="1e-3" selected>mm</option>
+                            <option value="1e-2">cm</option>
+                            <option value="1">m</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-calcular" onclick="calcularEspiras()">Calcular Espiras</button>
+                <h2 id="resultadoEspiras"></h2>
+            </div>
+
+            <!-- === CARD 3: ANTENA DIPOLO === -->
+            <div class="calculator-card">
+                <h3 class="card-title">Antena Dipolo <span class="sub-info">(Meia Onda)</span></h3>
+                <div class="input-group">
+                    <label for="freqDipolo">Frequência de Operação</label>
+                    <div class="input-with-select">
+                        <input type="number" id="freqDipolo" step="any" placeholder="Valor">
+                        <select id="freqDipoloUnidade">
+                            <option value="1e-3">kHz</option>
+                            <option value="1" selected>MHz</option>
+                            <option value="1e3">GHz</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-calcular" onclick="calcularDipolo()">Calcular Dipolo</button>
+                <h2 id="resultadoDipolo"></h2>
+            </div>
+
+            <!-- === CARD 4: ANTENA PLANO TERRA === -->
+            <div class="calculator-card">
+                <h3 class="card-title">Antena Plano Terra <span class="sub-info">(1/4 de Onda)</span></h3>
+                <div class="input-group">
+                    <label for="freqGround">Frequência de Operação</label>
+                    <div class="input-with-select">
+                        <input type="number" id="freqGround" step="any" placeholder="Valor">
+                        <select id="freqGroundUnidade">
+                            <option value="1e-3">kHz</option>
+                            <option value="1" selected>MHz</option>
+                            <option value="1e3">GHz</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-calcular" onclick="calcularGroundPlane()">Calcular Plano Terra</button>
+                <h2 id="resultadoGround"></h2>
+            </div>
+        </div>
+        <footer>
+        <h3> 2026 by Robson Araujo - Página para fins de estudos</h3>
+        <a href="mailto:mamedio1@outlook.com">Envie um email</a>
+    </footer>
+    </div>
+    <script src="./script.js"></script>
+    
+</body>
+
+
+
+</html>
