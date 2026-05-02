@@ -8,7 +8,7 @@
 ![Canvas API](https://img.shields.io/badge/Canvas%20API-000000?style=for-the-badge&logo=html5&logoColor=white)
 
 ---
-![Logo](img/Calculo RF.PNG) 
+![Logo](img/CalculoRF.PNG) 
 ## ✨ Funcionalidades
 
 A página conta com **4 calculadoras interativas**, todas com conversão automática de unidades (pF, nF, µF, nH, µH, etc.) e validação de dados:
