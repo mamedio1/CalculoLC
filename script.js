@@ -21,7 +21,7 @@
             const H = canvas.height;
             const cw = W / COLS;
             const ch = H / ROWS;
-
+  
             ctx.clearRect(0, 0, W, H);
 
             for (let r = 0; r <= ROWS; r++) {
